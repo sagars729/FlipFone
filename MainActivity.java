@@ -4,6 +4,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
@@ -13,10 +14,15 @@ public class MainActivity extends FragmentActivity implements PlayFrag.OnButtonP
     private SensorManager sensorManager;
     private Sensor gyroscopeSensor;
     private SensorEventListener gyroscopeEventListener;
+    MediaPlayer mediaPlayer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /////
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.maskoff);
+        mediaPlayer.start();
+        ////Jazz
         sensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
@@ -70,6 +76,8 @@ public class MainActivity extends FragmentActivity implements PlayFrag.OnButtonP
     protected void onPause(){
         super.onPause();
         sensorManager.unregisterListener(gyroscopeEventListener);
+        mediaPlayer.stop();
+        mediaPlayer.release();
     }
     @Override
     public void onBackPressed(){
@@ -104,3 +112,23 @@ public class MainActivity extends FragmentActivity implements PlayFrag.OnButtonP
         }
     }
 }
+/*class song extends Activity {
+    MediaPlayer mediaPlayer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.maskoff);
+        mediaPlayer.start();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.stop();
+        mediaPlayer.release();
+
+    }
+}*/
