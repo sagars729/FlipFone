@@ -1,89 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/grey">
+package com.example.jk.flipfone;
 
-    <Button
-        android:text="Tutorial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/buttonTutorial"
-        android:layout_alignParentEnd="true" />
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
-    <Button
-        android:text="Music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonMusic"
-        android:layout_below="@+id/buttonTutorial"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+/**
+ * Created by User on 2/27/2017.
+ */
 
-    <Button
-        android:text="Sound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonSound"
-        android:layout_below="@+id/buttonMusic"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+public class settingsFrag extends Fragment implements View.OnClickListener{
+    PlayFrag.OnButtonPressedListener mCallback;
+    Button TButton, MButton, SButton, CButton, RButton, LButton, TOSButton, CrButton;
+    public interface OnButtonPressedListener {
+        public void onButtonSelected(String whichOne);
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
-    <Button
-        android:text="Camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonCamera"
-        android:layout_below="@+id/buttonSound"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        View rootView = inflater.inflate(R.layout.settings, container, false);
+        TButton = (Button) rootView.findViewById(R.id.buttonTutorial);
+        TButton.setOnClickListener(this);
+        MButton = (Button) rootView.findViewById(R.id.buttonMusic);
+        MButton.setOnClickListener(this);
+        SButton = (Button) rootView.findViewById(R.id.buttonSound);
+        SButton.setOnClickListener(this);
+        CButton = (Button) rootView.findViewById(R.id.buttonCamera);
+        CButton.setOnClickListener(this);
+        RButton = (Button) rootView.findViewById(R.id.buttonRemoveAds);
+        RButton.setOnClickListener(this);
+        LButton = (Button) rootView.findViewById(R.id.buttonLogin);
+        LButton.setOnClickListener(this);
+        TOSButton = (Button) rootView.findViewById(R.id.buttonTermsOfService);
+        TOSButton.setOnClickListener(this);
+        CrButton = (Button) rootView.findViewById(R.id.buttonCredits);
+        CrButton.setOnClickListener(this);
+        return rootView;
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
-    <Button
-        android:text="Remove Ads"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonRemoveAds"
-        android:layout_below="@+id/buttonCamera"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception.
+        try {
+            mCallback = (PlayFrag.OnButtonPressedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnButtonPressedListener");
+        }
+    }
+    public void onClick (View v){
+        if(v == TButton)
+            mCallback.onButtonSelected("Tutorial");
+        else if(v == MButton)
+            mCallback.onButtonSelected("Music");
+        else if(v == SButton)
+            mCallback.onButtonSelected("Sound");
+        if(v == CButton)
+            mCallback.onButtonSelected("Camera");
+        else if(v == RButton)
+            mCallback.onButtonSelected("RemoveAds");
+        else if(v == LButton)
+            mCallback.onButtonSelected("Login");
+        else if(v == TOSButton)
+            mCallback.onButtonSelected("Terms of Service");
+        else if(v == CrButton)
+            mCallback.onButtonSelected("Credits");
+    }
 
-    <Button
-        android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonLogin"
-        android:layout_below="@+id/buttonRemoveAds"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="Terms of Service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonTermsOfService"
-        android:layout_below="@+id/buttonLogin"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="Credits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonCredits"
-        android:layout_below="@+id/buttonTermsOfService"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:typeface="serif"
-        android:id="@+id/textView"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+}
