@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/spinningfone"
+        android:id="@+id/imageView4"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:text="HOME"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/home"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignEnd="@+id/imageView3"
+        android:layout_marginEnd="21dp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:text="TIPS"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tips"
+        android:layout_alignBottom="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_marginStart="34dp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:text="TUTORIAL"
+        android:layout_marginTop="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:textSize="25sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:text="4. Repeat process after every time you flip your phone until you flip out of range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/four"
+        android:textSize="15sp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/three"
+        android:layout_marginStart="40dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="3. Try to get the number of flips within the range. (1 flip = 360 degrees)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/three"
+        android:textSize="15sp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/two"
+        android:layout_alignStart="@+id/four" />
+
+    <TextView
+        android:text="2. Flip your phone in the air so it rotates in landscape mode "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/two"
+        android:textSize="15sp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/one"
+        android:layout_alignStart="@+id/three" />
+
+    <TextView
+        android:text="1. Click the circle to start recording the number of flips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/one"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/title"
+        android:layout_alignStart="@+id/two" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/arrow"
+        android:id="@+id/imageView2"
+        android:textColor="@color/white"
+        android:layout_above="@+id/tips"
+        android:layout_toEndOf="@+id/two" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/arrowleft"
+        android:id="@+id/imageView3"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignStart="@+id/four" />
+
+</RelativeLayout>
